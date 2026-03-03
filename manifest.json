@@ -3,7 +3,10 @@
   "short_name": "Meter Widget",
   "description": "A premium WAPDA Digital Meter clock with Hijri date.",
   "start_url": "./index.html",
+  "scope": "./",
+  "id": "/wapda-meter-widget",
   "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#0a0a0a",
   "theme_color": "#00ff00",
   "icons": [

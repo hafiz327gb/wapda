@@ -20,36 +20,29 @@ function updateClock() {
 
     // Hijri Date Calculation
     try {
-        // Adjust for local Hijri calculation if needed (-1 or +1)
         const adjustedDate = new Date(now);
-        // Note: The original code used a -1 adjustment, we'll keep that logic if it matches user's local sighting.
+        // User requested -1 day adjustment for local sighting
         adjustedDate.setDate(now.getDate() - 1);
 
-        const hijriOptions = {
-            day: 'numeric',
-            month: 'long',
-            year: 'numeric',
-            calendar: 'islamic-umalqura'
-        };
+        const hijriMonths = [
+            "MUHARRAM", "SAFAR", "RABI' AL-AWWAL", "RABI' AL-THANI",
+            "JUMADA AL-ULA", "JUMADA AL-AKHIRA", "RAJAB", "SHA'BAN",
+            "RAMADAN", "SHAWWAL", "DHU AL-QI'DA", "DHU AL-HIJJA"
+        ];
 
-        const hijriFormatter = new Intl.DateTimeFormat('en-u-ca-islamic-umalqura', {
-            day: 'numeric',
-            month: 'long',
-            year: 'numeric'
-        });
-
-        // For better control, we can extract parts
+        // Use numeric values to avoid browser text fallback bugs
         const parts = new Intl.DateTimeFormat('en-u-ca-islamic-umalqura', {
             day: 'numeric',
-            month: 'long',
+            month: 'numeric',
             year: 'numeric'
         }).formatToParts(adjustedDate);
 
         const hDay = parts.find(p => p.type === 'day').value;
-        const hMonth = parts.find(p => p.type === 'month').value;
+        const hMonthIndex = parseInt(parts.find(p => p.type === 'month').value) - 1;
         const hYear = parts.find(p => p.type === 'year').value;
 
-        document.getElementById("hijri").textContent = `${hDay} ${hMonth.toUpperCase()} ${hYear} AH`;
+        const hMonthName = hijriMonths[hMonthIndex] || "UNKNOWN";
+        document.getElementById("hijri").textContent = `${hDay} ${hMonthName} ${hYear} AH`;
     } catch (e) {
         console.error("Hijri error:", e);
         document.getElementById("hijri").textContent = "HIJRI DATA ERROR";
