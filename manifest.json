@@ -9,6 +9,21 @@
   "orientation": "portrait",
   "background_color": "#0a0a0a",
   "theme_color": "#00ff00",
+  "widgets": [
+    {
+      "name": "WAPDA Meter",
+      "description": "Live digital meter clock",
+      "tag": "meter-widget",
+      "ms_appview": "widget.html",
+      "icons": [
+        {
+          "src": "icon.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
   "icons": [
     {
       "src": "icon.png",

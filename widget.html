@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meter Widget View</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: transparent;
+            height: 100vh;
+            display: flex;
+            padding: 10px;
+        }
+
+        .meter-wrapper {
+            width: 100%;
+            height: auto;
+            max-width: none;
+            box-shadow: none;
+            /* Lighter for widget view */
+        }
+
+        .time-display {
+            font-size: 1.8rem;
+        }
+
+        .date-text {
+            font-size: 0.75rem;
+        }
+
+        .hijri-text {
+            font-size: 0.7rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="meter-wrapper">
+        <div class="meter-header">
+            <div class="brand">WAPDA</div>
+            <div class="status-led"></div>
+        </div>
+        <div class="display-panel">
+            <div class="time-display" id="time">--:--:-- --</div>
+            <div class="date-row">
+                <div class="date-text" id="gdate">-- --- ----</div>
+                <div class="date-text" id="day">-------</div>
+                <div class="hijri-text" id="hijri">-- ------- ----</div>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
