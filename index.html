@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WAPDA Meter Widget</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0d0d0d">
+  <link rel="apple-touch-icon" href="icon.png">
+</head>
+<body>
+
+  <div class="meter-wrapper">
+    <div class="meter-header">
+      <div class="brand">WAPDA</div>
+      <div class="status-led"></div>
+    </div>
+
+    <div class="display-panel">
+      <div class="time-display" id="time">00:00:00 AM</div>
+      <div class="date-row">
+        <div class="date-text" id="gdate">03 MAR 2026</div>
+        <div class="date-text" id="day">TUESDAY</div>
+        <div class="hijri-text" id="hijri">01 RAMADAN 1447</div>
+      </div>
+    </div>
+
+    <div class="info-strip">
+      <span>TYPE: PKE-240-PRO</span>
+      <span>SER: 89123456</span>
+    </div>
+
+    <div class="barcode"></div>
+
+    <div class="footer-tags">
+      <span>SEAL INTACT</span>
+      <span>REV-2026.03</span>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').then(registration => {
+          console.log('SW registered: ', registration);
+        }).catch(registrationError => {
+          console.log('SW registration failed: ', registrationError);
+        });
+      });
+    }
+  </script>
+</body>
+</html>
